@@ -1,0 +1,59 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+
+    width: 15vw;
+    height: 80vh;
+
+    z-index: 1000;
+    background-color: white;
+
+    padding: 15px;
+    padding-top: 45px;
+    padding-left: 25px;
+
+    text-align: left;
+
+    & div:nth-child(n) {
+        margin-bottom: 15px;
+    }
+
+    span {
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    &__sort, &__filter, &__cost, &__avia {
+        span {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__radio {
+        display: grid;
+        grid-template-columns: auto 3fr;
+
+        column-gap: 5px;
+    }
+
+    &__input {
+        display: grid;
+        grid-template-columns: 5% auto;
+
+        column-gap: 15px;
+        row-gap: 15px;
+        
+        input {
+            width: 80%;
+        }
+    } 
+
+    &__checkbox {
+        display: grid;
+        grid-template-columns: 5% auto;
+
+        column-gap: 5px;
+    }
+
+}
