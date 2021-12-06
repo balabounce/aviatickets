@@ -1,0 +1,12 @@
+.productlist {
+    display: flex;
+    width: fit-content;
+    margin-left: 18%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__btn {
+        width: 12em;
+        padding: 2px 15px;
+    }
+}

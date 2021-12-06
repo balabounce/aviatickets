@@ -1,11 +1,116 @@
 .productitem {
-    width: 50vw;
-    margin: 0 10%;
+    width: 30vw;
+    margin: 0 18%;
+    margin-bottom: 25px;
 
-    header {
+    &__header {
         display: flex;
+        padding: 0 10px;
+        
+        height: 70px;
+
+        justify-content: space-between;
+        align-items: center;
 
         background-color: rgb(0,135,201);
+        color: white;
 
+        &_img {
+            display: flex;
+            
+            width: 155px;
+            height: auto;
+           
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 100%;
+                height: 50%;
+            }
+        }
+
+        &_cost {
+            display: flex;
+            flex-direction: column;
+            h2 {
+                margin: 0;
+                text-align: right;
+            }
+        }
+    }
+
+    &__way {
+        padding-left: 5px;
+        font-size: 18px;
+        p {
+            text-align: left;
+            margin: 15px 0;
+        }
+        span {
+            color: rgb(0,135,201);
+        }
+        hr {
+            background-color: grey;
+            opacity: .3;
+        }
+    }
+
+    &__time {
+        display: flex;
+        
+        justify-content: space-between;
+        align-items: center;
+
+        padding-left: 5px;
+        padding-right: 20px;
+        
+        p {
+            span {
+                color: rgb(0,135,201);
+            }
+            img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+
+    &__transfer {
+        position: relative;
+        span {
+            display: inline-block;
+            position: absolute;
+            top: -450%;
+            left: 41.5%;
+            padding: 0px 4px;
+
+            background-color: white;
+            color: rgb(254,176,103); 
+        }
+        hr {
+            margin: 0;
+        }
+    }
+
+    .company {
+        padding-left: 5px;
+        text-align: left;
+    }
+
+    button {
+        width: 100%;
+        height: 2em;
+        color: white;
+        border: none;
+        background-color: rgb(254,176,103);
+        cursor: pointer;
+        &:hover {
+            filter: brightness(90%);
+        }
+    }
+
+    .path_separator {
+        height: 1px;
+        background-color: rgb(0,135,201);
     }
 }
