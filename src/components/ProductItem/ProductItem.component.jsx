@@ -3,7 +3,7 @@ import './ProductItem.styles.scss';
 import lotLogo from '../../assets/lot-logo.png';
 import clock from '../../assets/clock.svg';
 
-const ProductItem = () => {
+const ProductItem = ({departureCityBack, departureAirportBack, departureAirportUidBack, departureCityTO, departureAirportTO, departureAirportUidTO, cost, departureTimeBack, departureTimeTO}) => {
     return (
         <div className='productitem'>
                 <header className='productitem__header'>

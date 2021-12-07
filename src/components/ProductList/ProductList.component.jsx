@@ -1,12 +1,21 @@
 import React from 'react';
 import ProductItem from '../ProductItem/ProductItem.component';
+import { createFlightObject } from '../../utils/utils';
 import './ProductList.styles.scss';
 
-const ProductList = () => {
+const ProductList = ({flights}) => {
     return (
         <div className='productlist'>
-            <ProductItem/>
-            <ProductItem/>
+            { 
+                flights.map((flight, i) => {
+                    const flightObj = createFlightObject(flight);
+                    if(i < 3) {
+                        console.log(flightObj);
+                        return <ProductItem {...flightObj} key={i}/>
+                    }
+                    return null;
+                })
+            }
             <button className='productlist__btn'>Показать еще</button>
         </div>
     )
