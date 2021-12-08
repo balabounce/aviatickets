@@ -2,8 +2,9 @@ import React from 'react';
 import './ProductItem.styles.scss';
 import lotLogo from '../../assets/lot-logo.png';
 import clock from '../../assets/clock.svg';
+import { createDay, durationFormate } from '../../utils/utils';
 
-const ProductItem = ({departureCityBack, departureAirportBack, departureAirportUidBack, departureCityTO, departureAirportTO, departureAirportUidTO, cost, departureTimeBack, departureTimeTO}) => {
+const ProductItem = ({departureCityBack, departureAirportBack, departureAirportUidBack, departureCityTO, departureAirportTO, departureAirportUidTO, cost, departureTimeBack, departureTimeTO, arrivalCityBack, arrivalAirportBack, arrivalAirportUidBack, arrivalCityTO, arrivalAirportTO, arrivalAirportUidTO, arrivalTimeTO, arrivalTimeBack, arrivalDuration, departureDuration, segmentsLengthTo, segmentsLengthBack, airlineCaptionTo, airlineCaptionBack}) => {
     return (
         <div className='productitem'>
                 <header className='productitem__header'>
@@ -11,46 +12,46 @@ const ProductItem = ({departureCityBack, departureAirportBack, departureAirportU
                         <img src={lotLogo} alt='logo-company'/>
                     </div>
                     <div className='productitem__header_cost'>
-                        <h2>21049₽</h2>
+                        <h2>{cost}₽</h2>
                         <span>Стоимость для одного взрослого пассажира</span>
                     </div>
                 </header>
                 <div className='productitem__body'>
                     <div className='productitem__way'>
-                        <p>Москва, ШЕРЕМЕТЬЕВО <span>(SVO) &#8594; </span>
-                            ЛОНДОН, Лондон, Хитроу <span> (LHR)</span>
+                        <p>{departureCityTO}, {departureAirportTO} <span>({departureAirportUidTO}) &#8594; </span>
+                            {departureCityBack}, {departureAirportBack} <span> ({departureAirportUidBack})</span>
                         </p>
                         <hr/>
                     </div> 
                     <div className='productitem__time'>
-                        <p>20:40 <span>18 авг. вт</span></p> 
-                        <p><img src={clock} alt='flytime'/> 14 ч 45 мин</p> 
-                        <p><span>19 авг. ср</span> 09:25</p> 
+                        <p>{departureTimeTO.getHours() + ':' + departureTimeTO.getMinutes()} <span>{createDay(departureTimeTO)}</span></p> 
+                        <p><img src={clock} alt='flytime'/> {durationFormate(departureDuration)}</p> 
+                        <p><span>{createDay(departureTimeBack)}</span> {departureTimeBack.getHours() + ':' + departureTimeBack.getMinutes()}</p> 
                     </div>
                     <div className='productitem__transfer'>
                         <hr/>
-                        <span>1 пересадка</span>
+                        {segmentsLengthTo === 2 ? <span>1 пересадка</span> : null}
                     </div>
-                    <p className='company'>Рейс выполняет: LOT Polish Airlines</p>
+                    <p className='company'>Рейс выполняет: {airlineCaptionTo}</p>
                 </div>
                 <hr className='path_separator'/>
                 <div className='productitem__body'>
                     <div className='productitem__way'>
-                        <p>ЛОНДОН, Лондон, Хитроу<span> (LHR) &#8594; </span>
-                            Москва, ШЕРЕМЕТЬЕВО <span> (SVO)</span>
+                        <p>{arrivalCityTO}, {arrivalAirportTO}<span> ({arrivalAirportUidTO}) &#8594; </span>
+                        {arrivalCityBack}, {arrivalAirportBack} <span> ({arrivalAirportUidBack})</span>
                         </p>
                         <hr/>
                     </div> 
                     <div className='productitem__time'>
-                        <p>18:10 <span>19 авг. ср</span></p> 
-                        <p><img src={clock} alt='flytime'/> 23 ч 35 мин</p> 
-                        <p><span>20 авг. чт</span> 19:45</p> 
+                        <p>{arrivalTimeTO.getHours()}:{arrivalTimeBack.getMinutes()} <span>{createDay(arrivalTimeTO)}</span></p> 
+                        <p><img src={clock} alt='flytime'/> {durationFormate(arrivalDuration)}</p> 
+                        <p><span>{createDay(arrivalTimeBack)}</span> {arrivalTimeBack.getHours()}:{arrivalTimeTO.getMinutes()}</p> 
                     </div>
                     <div className='productitem__transfer'>
                         <hr/>
-                        <span>1 пересадка</span>
+                        {segmentsLengthBack === 2 ? <span>1 пересадка</span> : null}
                     </div>
-                    <p className='company'>Рейс выполняет: LOT Polish Airlines</p>
+                    <p className='company'>Рейс выполняет: {airlineCaptionBack}</p>
                 </div>
                 <button>ВЫБРАТЬ</button>
         </div>

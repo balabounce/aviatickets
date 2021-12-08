@@ -9,10 +9,11 @@ const ProductList = ({flights}) => {
             { 
                 flights.map((flight, i) => {
                     const flightObj = createFlightObject(flight);
-                    if(i < 3) {
-                        console.log(flightObj);
-                        return <ProductItem {...flightObj} key={i}/>
-                    }
+                 //       console.log(flightObj)
+                        if(i < 3 && flightObj) {
+                            console.log(flightObj);
+                            return <ProductItem {...flightObj} key={i}/>
+                        }
                     return null;
                 })
             }
