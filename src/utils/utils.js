@@ -71,3 +71,7 @@ export function filterBySegment(arr, mode) {
 export function filterByCost (arr, from, to) {
     return arr;
 };
+
+export function filterByAviaComp (arr) {
+    return arr;
+};

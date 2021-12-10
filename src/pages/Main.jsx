@@ -1,10 +1,10 @@
 import React from 'react';
-import { sortByWayTime, filterBySegment, filterByCost } from '../utils/utils';
+import { sortByWayTime, filterBySegment, filterByCost, filterByAviaComp } from '../utils/utils';
 import { SideBar } from '../components';
 import { ProductList } from '../components';
 const Main = () => {
     const [flights, setFlights] = React.useState([]);
-    const [setFilter, filterObj] = React.useState({
+    const [filterObj, setFilterObj] = React.useState({
         sort: 'default',
         filter: 'default',
         cost: {
@@ -29,8 +29,23 @@ const Main = () => {
         fetchData();
     }, []);
 
+    const updateCompaniesChecked = React.useCallback((companie) => {
+        if (!!companie) {
+            setFilterObj(obj => {
+                const newFilterObj = {};
+                Object.assign(newFilterObj, obj);
+                newFilterObj.companies = companie;
+                return newFilterObj; 
+            });
+        }
+    }, []);
+
+    React.useEffect(() => console.log(flights), [flights]);
+
+
     React.useEffect(() => {
         let flightsArr = flights.slice();
+        console.log(filterObj);
         switch (filterObj.sort) {
             case 'desc':
                 setFlights(flightsArr.sort((a, b) => b - a));
@@ -54,13 +69,26 @@ const Main = () => {
             default :
                 break;
         }
-        console.log(filterObj.cost);
+        if(filterObj.cost) {
+            filterByCost(flightsArr, filterObj.cost.from, filterObj.cost.to); 
+        }
+        switch(filterObj.companies) {
+            case 'LOT':
+                filterByAviaComp(flightsArr);
+                break;
+            case 'Aeroflot':
+                filterByAviaComp(flightsArr);
+                break;
+            default:
+                filterByAviaComp(flightsArr);
+                break;
+        }
 
     }, [filterObj]);
 
     return (
         <>
-            <SideBar/>
+            <SideBar setFilterObj={setFilterObj} filterObj={filterObj} updateCompaniesChecked={updateCompaniesChecked}/>
             <ProductList flights={flights}/>
         </>
     );

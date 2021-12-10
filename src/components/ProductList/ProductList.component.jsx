@@ -11,7 +11,7 @@ const ProductList = ({flights}) => {
                     const flightObj = createFlightObject(flight);
                  //       console.log(flightObj)
                         if(i < 3 && flightObj) {
-                            console.log(flightObj);
+                           // console.log(flightObj);
                             return <ProductItem {...flightObj} key={i}/>
                         }
                     return null;
