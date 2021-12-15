@@ -1,15 +1,16 @@
 import React from 'react';
 import './ProductItem.styles.scss';
 import lotLogo from '../../assets/lot-logo.png';
+import aeroflotLogo from '../../assets/aeroflot.png';
 import clock from '../../assets/clock.svg';
 import { createDay, durationFormate } from '../../utils/utils';
 
-const ProductItem = ({departureCityBack, departureAirportBack, departureAirportUidBack, departureCityTO, departureAirportTO, departureAirportUidTO, cost, departureTimeBack, departureTimeTO, arrivalCityBack, arrivalAirportBack, arrivalAirportUidBack, arrivalCityTO, arrivalAirportTO, arrivalAirportUidTO, arrivalTimeTO, arrivalTimeBack, arrivalDuration, departureDuration, segmentsLengthTo, segmentsLengthBack, airlineCaptionTo, airlineCaptionBack}) => {
+const ProductItem = ({departureCityBack, departureAirportBack, departureAirportUidBack, departureCityTO, departureAirportTO, departureAirportUidTO, cost, departureTimeBack, departureTimeTO, arrivalCityBack, arrivalAirportBack, arrivalAirportUidBack, arrivalCityTO, arrivalAirportTO, arrivalAirportUidTO, arrivalTimeTO, arrivalTimeBack, arrivalDuration, departureDuration, segmentsLengthTo, segmentsLengthBack, airlineCaptionTo, airlineCaptionBack, uid}) => {
     return (
         <div className='productitem'>
                 <header className='productitem__header'>
                     <div className='productitem__header_img'>
-                        <img src={lotLogo} alt='logo-company'/>
+                    <img src={uid === 'LO' ? lotLogo : aeroflotLogo} alt='logo-company'/>
                     </div>
                     <div className='productitem__header_cost'>
                         <h2>{cost}₽</h2>

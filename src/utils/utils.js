@@ -1,6 +1,9 @@
 export function createFlightObject (flight) {
     const flightObj = {};
     try {
+
+        flightObj.uid = flight.carrier.uid;
+
         flightObj.cost = flight.price.passengerPrices[0].singlePassengerTotal.amount.replace(/\.[0-9]+/g, ''); // Стоимость на одного взрослого пассажира
         flightObj.segmentsLengthTo =  flight.legs[0].segments.length; // Полет туда. Если 2 сегмента, то есть пересадка
         flightObj.segmentsLengthBack = flight.legs[1].segments.length; // Полет обратно. Если 2 сегмента, то есть пересадка
@@ -58,20 +61,4 @@ export function durationFormate (duration) {
     const hours = Math.floor(duration / 60);
     const minutes = duration - 60 * hours;
     return `${hours} ч ${minutes} мин`;
-};
-
-export function sortByWayTime (arr) {
-    return arr;
-};
-
-export function filterBySegment(arr, mode) {
-    return arr;
-};
-
-export function filterByCost (arr, from, to) {
-    return arr;
-};
-
-export function filterByAviaComp (arr) {
-    return arr;
 };
